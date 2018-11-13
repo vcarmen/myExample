@@ -1,4 +1,4 @@
-package main.com.mypro.hello;
+package com.mypro.hello;
 
 public class HelloWorld
 {

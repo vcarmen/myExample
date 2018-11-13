@@ -1,4 +1,4 @@
-package main.com.mypro.hello;
+package com.mypro.hello;
 import com.mypro.hello.HelloWorld;
 import org.junit.Test;
 import static org.junit.Assert.*;

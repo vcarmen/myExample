@@ -3,3 +3,4 @@ language: java
 jobs:
   include:
     - stage: build
+    - stage: test

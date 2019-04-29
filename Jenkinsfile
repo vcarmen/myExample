@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh './gradlew build'
                 sh 'ls -la /data/build/**'
-                touch 'build/test-results/*.xml'
+                sh 'touch build/test-results/*.xml'
                 junit 'build/test-results/*.xml'
             }
         }

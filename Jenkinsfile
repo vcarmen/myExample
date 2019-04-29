@@ -13,6 +13,11 @@ pipeline {
                 sh 'ls -la /data'
             }
         }
+        stage('build') {
+            steps {
+                sh 'gradlew build'
+            }
+        }
     }
 
 }

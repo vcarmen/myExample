@@ -16,7 +16,7 @@ pipeline {
         stage('build') {
             steps {
                 sh './gradlew build'
-                sh 'ls -la /data'
+                sh 'ls -la /data/build/**'
                 junit 'reports/**/*.xml'
             }
         }

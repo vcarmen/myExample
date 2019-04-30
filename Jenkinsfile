@@ -21,6 +21,15 @@ pipeline {
                 junit 'build/test-results/*.xml'
             }
         }
+        stage('SonarQube') {
+            steps {
+                sh './gradlew sonarqube \
+  -Dsonar.projectKey=vcarmen_myExample \
+  -Dsonar.organization=vcarmen-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'
+            }
+        }
     }
 
 }

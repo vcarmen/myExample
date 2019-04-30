@@ -8,7 +8,7 @@
  */
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-apply plugin: 'org.sonarqube:2.7'
+apply plugin: 'sonarqube'
 
 // In this section you declare where to find the dependencies of your project
 repositories {

@@ -32,6 +32,7 @@ pipeline {
         }*/ //with jenkins
 
         stage("build & SonarQube analysis") {
+            agent any
             steps {
                 sh './gradlew sonarqube \
                         -Dsonar.projectKey=vcarmen_myExample \
@@ -40,10 +41,11 @@ pipeline {
                         -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'
                 }
         }
-        
+
         stage("Quality Gate") {
+            agent any
             steps {
-                timeout(time: 1, unit: 'HOURS') {
+                timeout(time: 1, unit: 'MINUTES') {
                 waitForQualityGate abortPipeline: true
                 }
             }

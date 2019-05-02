@@ -33,15 +33,14 @@ pipeline {
 
         stage("build & SonarQube analysis") {
             steps {
-                withSonarQubeEnv('SonarQubeScanner') {
                 sh './gradlew sonarqube \
                         -Dsonar.projectKey=vcarmen_myExample \
                         -Dsonar.organization=vcarmen-github \
                         -Dsonar.host.url=https://sonarcloud.io \
                         -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'
                 }
-            }
         }
+        
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {

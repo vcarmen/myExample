@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sh 'uname -a'
                 sh 'pwd'
-                sh 'ls -la /'
+                sh 'ls -la /tmp'
             }
         }
     }

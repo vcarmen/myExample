@@ -42,9 +42,6 @@ pipeline {
                 sh 'pwd'
                 sh 'ls -la /tmp'
             }
-            steps {
-                sh 'docker ps -a'
-            }
         }
     }
 

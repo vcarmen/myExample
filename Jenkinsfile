@@ -14,6 +14,7 @@ pipeline {
                 stage('stage2'){
                     steps {
                         sh 'echo stage2-step1'
+                        sh 'exit -1'
                     }
                 }
                 stage('build') {

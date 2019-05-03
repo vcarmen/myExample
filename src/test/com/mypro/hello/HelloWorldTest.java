@@ -14,7 +14,7 @@ public class HelloWorldTest {
     }
     @Test public void testHelloWorldMessageIsNotNull() {
         HelloWorld classUnderTest = new HelloWorld();
-        assertNotNull("Hello", "Hello");
+        assertEquals("Hello", "Hello2");
     }        
 }
 

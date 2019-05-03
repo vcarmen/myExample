@@ -1,40 +1,42 @@
 pipeline {
-    agent {
-        dockerfile true
-    }
+    agent any
     stages {
-        stage('Examples') {
-            steps {
-                echo "Hello Class"
-            }
-        }
-        stage('Verify if project copied') {
-            steps {
-                sh 'ls -la /data'
-            }
-        }
-        stage('build') {
-            steps {
-                sh './gradlew build'
-                sh 'ls -la /data/build/**'
-                sh 'touch build/test-results/*.xml'
-                junit 'build/test-results/*.xml'
-            }
-        } //with gradle
-        stage('SonarQube - Gradle') {
-            steps {
-                sh 'echo Sonar Analysis'
-                /*'./gradlew sonarqube \
-                        -Dsonar.projectKey=vcarmen_myExample \
-                        -Dsonar.organization=vcarmen-github \
-                        -Dsonar.host.url=https://sonarcloud.io \
-                        -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'*/
-            }
-        }
-        stage('Run on Master') {
+        stage('Build In DockerContainer') {
             agent {
-                label 'master'
+                dockerfile true
+                }
+            stages {
+                stage('stage1'){
+                    steps {
+                        sh 'echo stage1-step1'
+                    }
+                }
+                stage('stage2'){
+                    steps {
+                        sh 'echo stage2-step1'
+                    }
+                }
+                stage('build') {
+                    steps {
+                        sh './gradlew build'
+                        sh 'touch build/test-results/*.xml'
+                        junit 'build/test-results/*.xml'
+                    }
+                } //with gradle
+                stage('SonarQube') {
+                    steps {
+                        sh 'echo Sonar Analysis'
+                        /*'./gradlew sonarqube \
+                                -Dsonar.projectKey=vcarmen_myExample \
+                                -Dsonar.organization=vcarmen-github \
+                                -Dsonar.host.url=https://sonarcloud.io \
+                                -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'*/
+                    }
+                }
             }
+            
+        }    
+        stage('Run on Master') {
             steps {
                 sh 'uname -a'
                 sh 'pwd'

@@ -32,9 +32,13 @@ pipeline {
             }
         }
         stage('Run on Master') {
+            agent {
+                label 'master'
+            }
             steps {
                 sh 'uname -a'
                 sh 'pwd'
+                sh 'ls -la /'
             }
         }
     }

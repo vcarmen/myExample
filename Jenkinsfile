@@ -20,8 +20,6 @@ pipeline {
                     steps {
                         sh './gradlew build'
                         sh 'ls -la build/**'
-                        sh 'touch build/test-results/*.xml'
-                        junit 'build/test-results/*.xml'
                     }
                 } //with gradle
                 stage('SonarQube') {
@@ -36,6 +34,10 @@ pipeline {
                 }
             }
             post {
+                always {
+                    sh 'touch build/test-results/*.xml'
+                    junit 'build/test-results/*.xml'
+                }
                 success {
                     archiveArtifacts artifacts: 'build/**/*.jar', fingerprint: true
                 }

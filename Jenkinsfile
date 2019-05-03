@@ -31,6 +31,12 @@ pipeline {
                         -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'*/
             }
         }
+        stage('Run on Master') {
+            steps {
+                sh 'uname -a'
+                sh 'pwd'
+            }
+        }
     }
 
 }

@@ -51,6 +51,11 @@ pipeline {
                 sh 'ls -la /tmp'
             }
         }
+        post {
+            always{
+                sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
+            }
+        }
     }
 
 }

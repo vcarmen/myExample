@@ -34,6 +34,11 @@ pipeline {
                     }
                 }
             }
+            post {
+                success {
+                    stash name: "artifacts", includes: "build/**/*.jar"
+                }
+            }
             
         }    
         stage('Run on Master') {

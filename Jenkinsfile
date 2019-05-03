@@ -23,13 +23,17 @@ pipeline {
         } //with gradle
         stage('SonarQube - Gradle') {
             steps {
-                sh './gradlew sonarqube \
+                sh 'echo Sonar Analysis'
+                /*'./gradlew sonarqube \
                         -Dsonar.projectKey=vcarmen_myExample \
                         -Dsonar.organization=vcarmen-github \
                         -Dsonar.host.url=https://sonarcloud.io \
-                        -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'
+                        -Dsonar.login=8ec75efdc743b51295d9243a127f322d66abc7e9'*/
             }
         }
     }
 
 }
+//https://www.youtube.com/watch?v=y-Oz9lBYsH8
+//https://gist.github.com/merikan/228cdb1893fca91f0663bab7b095757c
+//https://jenkins.io/doc/pipeline/steps/sonar/

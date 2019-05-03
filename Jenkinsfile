@@ -51,13 +51,12 @@ pipeline {
                 sh 'ls -la /tmp'
             }
         }
-        post {
-            always{
-                sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
-            }
+    }
+    post {
+        always{
+            sh 'docker images -q -f dangling=true | xargs --no-run-if-empty docker rmi'
         }
     }
-
 }
 //https://www.youtube.com/watch?v=y-Oz9lBYsH8
 //https://gist.github.com/merikan/228cdb1893fca91f0663bab7b095757c

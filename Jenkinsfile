@@ -19,6 +19,7 @@ pipeline {
                 stage('build') {
                     steps {
                         sh './gradlew build'
+                        sh 'ls -la build/**'
                         sh 'touch build/test-results/*.xml'
                         junit 'build/test-results/*.xml'
                     }
@@ -36,7 +37,7 @@ pipeline {
             }
             post {
                 success {
-                    stash name: "artifacts", includes: "build/**/*.jar"
+                    archiveArtifacts artifacts: 'build/**/*.jar', fingerprint: true
                 }
             }
             

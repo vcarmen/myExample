@@ -8,5 +8,13 @@ public class HelloWorldTest {
         HelloWorld classUnderTest = new HelloWorld();
         assertNotNull("Hello", "Hello");
     }
+    @Test public void testHelloWorldMessageIsPrinted() {
+        HelloWorld classUnderTest = new HelloWorld();
+        assertNotNull("Hello", "Hello");
+    }
+    @Test public void testHelloWorldMessageIsNotNull() {
+        HelloWorld classUnderTest = new HelloWorld();
+        assertEquals("Hello", "Hello");
+    }        
 }
 

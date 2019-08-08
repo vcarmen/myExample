@@ -1,0 +1,1 @@
+https://github.com/JFrog/project-examples/tree/master/gradle-examples

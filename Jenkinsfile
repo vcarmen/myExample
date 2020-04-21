@@ -15,7 +15,7 @@ pipeline {
         stage('DeployToDev'){
             steps {
                 sh 'echo moving to dev installation directorio /dev, docker-compose down,clean DeleteDirs'
-                sh 'echo copy the install directory (Dockerfile, docker-compose.yalm)'
+                sh 'echo copy the install directory Dockerfile, docker-compose.yalm'
                 sh 'echo deploying to Dev'
             }
         }
@@ -38,7 +38,7 @@ pipeline {
         stage('DeployToQA'){
             steps{
                 sh 'echo moving to qa installation directorio /qa, clean docker-compose down, delete'
-                sh 'echo copy the install directory (docker image, docker-compose-qa.yalm)'
+                sh 'echo copy the install directory docker image, docker-compose-qa.yalm'
                 sh 'echo deploying to QA'
                 sh 'echo deploy docker-compose-qa.yaml'
             }

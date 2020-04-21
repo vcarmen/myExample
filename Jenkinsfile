@@ -13,8 +13,12 @@ pipeline {
             }
         }
         stage('DeployToDev'){
+            environment {
+                DEV_HOME='/deployments/dev'
+            }
             steps {
-                sh 'echo moving to dev installation directorio /dev, docker-compose down,clean DeleteDirs'
+                sh 'echo $DEV_HOME'
+                sh 'echo docker-compose down,clean DeleteDirs'
                 sh 'echo copy the install directory Dockerfile, docker-compose.yalm'
                 sh 'echo deploying to Dev'
             }
@@ -36,8 +40,12 @@ pipeline {
             }
         }
         stage('DeployToQA'){
+            environment {
+                QA_HOME='/deployments/qa'
+            }
             steps{
-                sh 'echo moving to qa installation directorio /qa, clean docker-compose down, delete'
+                sh 'echo $QA_HOME'
+                sh 'echo clean docker-compose down, delete'
                 sh 'echo copy the install directory docker image, docker-compose-qa.yalm'
                 sh 'echo deploying to QA'
                 sh 'echo deploy docker-compose-qa.yaml'

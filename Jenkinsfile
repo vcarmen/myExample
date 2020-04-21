@@ -28,6 +28,8 @@ pipeline {
             steps{
                 sh 'echo publish to artifactory'
             }
+        }
+        stage('PushToDockerHub'){
             steps{
                 sh 'echo tag properly the image'
                 sh 'echo push to docker hub'
